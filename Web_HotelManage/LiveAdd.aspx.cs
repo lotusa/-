@@ -93,12 +93,15 @@ public partial class LiveAdd : System.Web.UI.Page
 
             Live model = new Live();
             //model.L_Deposit = Convert.ToDecimal(txtDeposit.Value.Trim());
-            model.L_IdCard = txtIdCard.Value.Trim();
             model.L_Name = txtName.Value.Trim();
+            model.L_IdCard = txtIdCard.Value.Trim();
+            model.L_Gender = RadioButtonListGender.SelectedValue;
+            model.L_Age = Convert.ToInt32(txtAge.Value.Trim());
+
             model.L_No = txtNo.Value.Trim();
             model.L_OutTime =Convert.ToDateTime("1900-01-01");
             model.L_Pay = 0;
-            model.L_State = "未结算";
+            model.L_State = "未退房";
             model.L_Tel = txtTel.Value.Trim();
             model.L_Time = Convert.ToDateTime(txtTime.Value);
             model.L_Total = 0;

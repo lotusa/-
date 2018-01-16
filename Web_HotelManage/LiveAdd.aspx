@@ -27,9 +27,9 @@
       <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link href="css/Manage.css" rel="stylesheet" type="text/css" />
+<%--    <link href="css/Manage.css" rel="stylesheet" type="text/css" />--%>
 
-
+    
     <script src="JavaScript/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
 
     <script language="javascript" type="text/javascript">
@@ -91,6 +91,12 @@
         .auto-style1 {
             height: 40px;
         }
+
+        label[for^="RadioButtonListGender"]
+        {
+            margin-bottom:0px;
+            margin:0px;
+        }
     </style>
 
 </head>
@@ -102,7 +108,7 @@
         <div class="Body_Title">
             <%=strNav%></div>
     </div>
-    <table style="width: 100%">
+    <table class=" table table-bordered">
         <tr>
             <th>
             入住编号：
@@ -161,6 +167,21 @@
                     style="color: Red;">*</span>
             </td>
            
+        </tr>
+        <tr>
+            <th>性别：
+            </th>
+            <td style="text-align: left;">
+
+                <asp:RadioButtonList ID="RadioButtonListGender" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow">
+                    <asp:ListItem Selected="True">男</asp:ListItem>
+                    <asp:ListItem>女</asp:ListItem>
+                </asp:RadioButtonList>
+
+                <span
+                    style="color: Red;">*</span>
+            </td>
+
         </tr>
         <tr>
             <th >
@@ -222,21 +243,20 @@
                         <h4 class="modal-title" id="myModalLabel">选择</h4>
                     </div>
                     <div class="modal-body">
-                        <div class="input-group">
-                            <h3>过滤：</h3>
-                            <label>姓名：</label><input id="txtNameFilter" class=" text-info"  size="10" maxlength="10"/>
-                            <label>电话：</label><input id="txtTelFilter" class=" text-info" />
-                            <label>身份证：</label><input id="txtIdFilter" class=" text-info" />
+                        <div class=" form-group">
+                            筛选：<input id="filterName" name="filterName" />
+                            
                         </div>
                         <asp:Repeater ID="userRepeater" runat="server">
                                             <HeaderTemplate>
-                    <table class="Admin_Table">
+                    <table id="tableGuest" class=" table table-bordered">
                         <thead>
-                            <tr class="Admin_Table_Title">
+                            <tr >
 
                                 <th>姓名</th>
                                 <th>手机</th>
                                 <th>身份证</th>
+                                <th>性别</th>
                                 <th>年龄</th>
                                 <th>操作</th>
 
@@ -246,13 +266,14 @@
                         </thead>
                 </HeaderTemplate>
                 <ItemTemplate>
-                    <tr ondblclick="setGuest(this)">
+                    <tr onclick="setGuest(this)" >
 
                         <td align="center"><%#Eval("L_Name")%></td>
                         <td align="center"><%#Eval("L_Tel")%></td>
                         <td align="center"><%#Eval("L_IdCard")%></td>
+                        <td align="center"><%#Eval("L_Gender")%></td>
 
-                        <td align="center"></td>
+                        <td align="center"><%#Eval("L_Age")%></td>
                         <td align="center"><button class="btn btn-primary" value="<%#Eval("L_Id") %>" onclick="setGuestInfo(this)">选择</button></td>
                      </tr>
                 </ItemTemplate>
@@ -260,7 +281,7 @@
                         </asp:Repeater>
                         
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                         <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
                         <%--<button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</button>--%>
                     </div>
                 </div>
@@ -270,15 +291,18 @@
         <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="Scripts/jquery-1.9.1.min.js"><\/script>')</script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<%--    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="Scripts/jquery-1.9.1.min.js"><\/script>')</script>--%>
+    <script  src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
     <script src="JavaScript/docs.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="JavaScript/ie10-viewport-bug-workaround.js"></script>
+
+    <script src="Scripts/jquery.columnfilters.js" type="text/javascript"></script>
     <script language="javascript" type="text/javascript">
         $("#btnSelectGuest").click(function () {
-            $("#myModalLabel").text("选择用户");
+            $("#myModalLabel").text("请选择");
             $('#myModal').modal();
         });
 
@@ -288,12 +312,79 @@
             
             alert(val);
         }
-        function setGuest(obj) {
+        function setGuest(row) {
 
-            var val = obj.innerHtml;
+            var name = $(row).children().eq(0).text();
+            var tel = $(row).children().eq(1).text();
+            var idCard = $(row).children().eq(2).text();
+            var age = $(row).children().eq(3).text();
 
-            alert(val);
+            $("#txtName").val(name);
+            $("#txtTel").val(tel);
+            $("#txtIdCard").val(idCard);
+            $("#txtAge").val(age);
+
+            $('#myModal').modal('hide');
+            //var val = obj.innerHTML;
+            //alert(val);
         }
+
+        //$(document).ready(function () {
+        //    $('table#tableGuest').columnFilters({ alternateRowClassNames: ['rowa', 'rowb'], excludeColumns: [3,4] });
+        //});
+
+  $(function(){ 
+      $("#filterName").keyup(function () {
+          if ($(this).val() == "")
+          {
+              $("table#tableGuest tbody tr")
+                    .show();
+              return;
+          }
+
+          $("table#tableGuest tbody tr") 
+                    .hide() 
+                    .filter(":contains('"+( $(this).val() )+"')") 
+                    .show(); 
+       }).keyup(); 
+  }) 
+
+  $(function () {
+      function GetBirthdatByIdNo(iIdNo) {
+          var ymd = "";
+          var sexStr = "";
+          iIdNo = $.trim(iIdNo);
+          if (iIdNo.length == 15) {
+              ymd = iIdNo.substring(6, 12);
+              ymd = "19" + tmpStr;
+              //tmpStr = tmpStr.substring(0, 4) + "-" + tmpStr.substring(4, 6) + "-" + tmpStr.substring(6);
+              sexStr = parseInt(iIdNo.substr(14, 1), 10) % 2 ? "男" : "女";
+              //birthday.text(sexStr + tmpStr);
+          } else {
+              //tmpStr = iIdNo.substring(6, 14);
+              //tmpStr = tmpStr.substring(0, 4) + "-" + tmpStr.substring(4, 6) + "-" + tmpStr.substring(6);
+              sexStr = parseInt(iIdNo.substr(16, 1), 10) % 2 ? "男" : "女";
+              ymd = iIdNo.substring(6, 14);
+              //birthday.text(sexStr + tmpStr);
+          }
+
+
+          var myDate = new Date();
+          var month = myDate.getMonth() + 1;
+          var day = myDate.getDate();
+
+          var age = myDate.getFullYear() - ymd.substring(0, 4) - 1;
+          if (ymd.substring(4, 6) < month || ymd.substring(4, 6) == month && ymd.substring(6, 8) <= day) {
+              age++;
+          }
+
+          sexStr == "男" ? $("#RadioButtonListGender_0")[0].checked = "checked" : $("#RadioButtonListGender_1")[0].checked = "checked";
+          $("#txtAge").val(age);
+      }
+      $("#txtIdCard").blur(function () {
+          GetBirthdatByIdNo($(this).val());
+      });
+  });
     </script>
 </body>
 </html>

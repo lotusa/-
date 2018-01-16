@@ -67,7 +67,7 @@ public partial class LiveSettlement : System.Web.UI.Page
             strWhere += " and L_IdCard like '%" + txtIdCard.Value.Trim() + "%'";
         }
 
-        strWhere += " and L_State='未结算'";
+        strWhere += " and L_State='未退房'";
 
 
         int DataCount = LiveBLL.CountNumber2(strWhere); //共多少条记录
@@ -171,7 +171,7 @@ public partial class LiveSettlement : System.Web.UI.Page
             strWhere += " and L_IdCard like '%" + txtIdCard.Value.Trim() + "%'";
         }
 
-        strWhere += " and L_State='未结算'";
+        strWhere += " and L_State='未退房'";
 
         this.RpNews.DataSource = LiveBLL.PageSelectLive2(Convert.ToInt32(HCount.Value), nowPage, strWhere, "L_Time", "asc");
         this.RpNews.DataBind();

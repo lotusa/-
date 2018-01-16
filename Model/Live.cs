@@ -16,6 +16,8 @@ namespace Model
         private string _L_No;
         private string _L_Name;
         private string _L_IdCard;
+        private int _L_Age;
+        private string _L_Gender;
         private string _L_Tel;
         private DateTime _L_Time;
         private DateTime _L_OutTime;
@@ -60,6 +62,18 @@ namespace Model
         {
             set { _L_IdCard = value; }
             get { return _L_IdCard; }
+        }
+
+        public int L_Age
+        {
+            set { _L_Age = value; }
+            get { return _L_Age; }
+        }
+
+        public string L_Gender
+        {
+            set { _L_Gender = value; }
+            get { return _L_Gender; }
         }
 
         /// <summary>
