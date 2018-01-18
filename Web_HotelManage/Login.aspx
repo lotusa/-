@@ -58,7 +58,7 @@
             <p>请输入登陆信息</p>
         </div>
         <div class="row">
-            <div class="col-md-offset-3 col-md-6">
+            <div class="col-md-offset-4 col-md-4">
 
 <%--                <div id="login_box">
 
@@ -77,7 +77,7 @@
 
                                     <div class="form-group help" style="margin-top: 15px;">
                                         <%--<span class="lable label-default " style="font-size: large; padding-top: 14px;">密　码：</span>--%>
-                                        <input type="password" class="form-control" runat="server" id="txtPwd" placeholder="密码" />
+                                        <input type="password" class="form-control " runat="server" id="txtPwd" placeholder="密码" />
                                         <i class="fa fa-lock"></i>
                                         <a href="#" class="fa fa-question-circle"></a>
                                     </div>

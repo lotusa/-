@@ -317,11 +317,13 @@
             var name = $(row).children().eq(0).text();
             var tel = $(row).children().eq(1).text();
             var idCard = $(row).children().eq(2).text();
-            var age = $(row).children().eq(3).text();
+            var gender = $(row).children().eq(3).text();
+            var age = $(row).children().eq(4).text();
 
             $("#txtName").val(name);
             $("#txtTel").val(tel);
             $("#txtIdCard").val(idCard);
+            gender == "男" ? $("#RadioButtonListGender_0")[0].checked = "checked" : $("#RadioButtonListGender_1")[0].checked = "checked";
             $("#txtAge").val(age);
 
             $('#myModal').modal('hide');
@@ -384,6 +386,7 @@
       $("#txtIdCard").blur(function () {
           GetBirthdatByIdNo($(this).val());
       });
+      
   });
     </script>
 </body>
