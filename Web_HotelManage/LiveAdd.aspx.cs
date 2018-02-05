@@ -35,7 +35,7 @@ public partial class LiveAdd : System.Web.UI.Page
             txtNo.Value ="RZ"+ DateTime.Now.ToString("yyMMddHHmmss");
             txtGetDate.Value = DateTime.Now.ToString("yyyy-MM-dd");
             txtTime.Value = DateTime.Now.ToString("yyyy-MM-dd");
-            txtUserName.Value = users.U_Name.Trim();
+            txtUserName.Value = null == users?string.Empty:users.U_Name.Trim();
             if (Request.QueryString["id"] != null)
             {
                 Orders ord = OrdersBLL.GetIdByOrders(Convert.ToInt32(Request.QueryString["id"]));
