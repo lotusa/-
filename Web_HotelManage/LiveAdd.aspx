@@ -75,11 +75,11 @@
                 document.getElementById("txtTime").focus();
                 return false;
             }
-            if (document.getElementById("txtDeposit").value == "") {
-                alert("带红色 * 号项不能为空！");
-                document.getElementById("txtDeposit").focus();
-                return false;
-            }
+            //if (document.getElementById("txtDeposit").value == "") {
+            //    alert("带红色 * 号项不能为空！");
+            //    document.getElementById("txtDeposit").focus();
+            //    return false;
+            //}
             
             
         }
@@ -155,6 +155,7 @@
             <td style="text-align: left; ">
                 <input id="txtTel" type="text"  runat="server"   /><span
                     style="color: Red;">*</span>
+                <asp:RegularExpressionValidator ID="rgvPhone" runat="server" ControlToValidate="txtTel" Display="Dynamic" ErrorMessage="手机号码错误" ValidationExpression="((\(\d{3}\)|\d{3}-)?\d{8}|\d{13})" ValidationGroup="ValidationGroupAddLive"></asp:RegularExpressionValidator>
             </td>
            
         </tr>
@@ -165,6 +166,7 @@
             <td style="text-align: left; ">
                 <input id="txtIdCard" type="text"  runat="server"   /><span
                     style="color: Red;">*</span>
+                <asp:RegularExpressionValidator ID="rgvID" runat="server" ErrorMessage="身份证号码错误" ValidationExpression="\d{17}[\d|X]|\d{15}" ControlToValidate="txtIdCard" Display="Dynamic" ValidationGroup="ValidationGroupAddLive"></asp:RegularExpressionValidator>
             </td>
            
         </tr>
@@ -203,7 +205,7 @@
             </td>
            
         </tr>
-<%--        <tr>
+        <%--        <tr>
             <th >
             入住定金：
             </th>
@@ -232,7 +234,6 @@
             </td>
         </tr>
     </table>
-    </form>
 
         <!--弹出对话框-->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -282,7 +283,7 @@
                         
                     <div class="modal-footer">
                          <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
-                        <%--<button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</button>--%>
+                         <%#Eval("L_Name")%>
                     </div>
                 </div>
             </div>
@@ -291,8 +292,7 @@
         <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-<%--    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="Scripts/jquery-1.9.1.min.js"><\/script>')</script>--%>
+            <%#Eval("L_Tel")%>
     <script  src="Scripts/jquery-1.9.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <script src="JavaScript/docs.min.js"></script>
@@ -310,7 +310,7 @@
             
             var val = obj.value;
             
-            alert(val);
+           // alert(val);
         }
         function setGuest(row) {
 
@@ -356,18 +356,23 @@
           var ymd = "";
           var sexStr = "";
           iIdNo = $.trim(iIdNo);
+
           if (iIdNo.length == 15) {
               ymd = iIdNo.substring(6, 12);
               ymd = "19" + tmpStr;
               //tmpStr = tmpStr.substring(0, 4) + "-" + tmpStr.substring(4, 6) + "-" + tmpStr.substring(6);
               sexStr = parseInt(iIdNo.substr(14, 1), 10) % 2 ? "男" : "女";
               //birthday.text(sexStr + tmpStr);
-          } else {
+          }
+          else if (iIdNo.length == 18) {
               //tmpStr = iIdNo.substring(6, 14);
               //tmpStr = tmpStr.substring(0, 4) + "-" + tmpStr.substring(4, 6) + "-" + tmpStr.substring(6);
               sexStr = parseInt(iIdNo.substr(16, 1), 10) % 2 ? "男" : "女";
               ymd = iIdNo.substring(6, 14);
               //birthday.text(sexStr + tmpStr);
+          }
+          else {
+              return;
           }
 
 
@@ -389,5 +394,7 @@
       
   });
     </script>
-</body>
+    </form>
+
+        </body>
 </html>
