@@ -82,6 +82,9 @@ public partial class RoomAdd : System.Web.UI.Page
             model.R_State =ddlState.SelectedValue;
             model.R_Tel = txtTel.Value.Trim();
             model.Rt_Id = Convert.ToInt32(ddlRt_Id.SelectedValue);
+            model.R_Beds = Convert.ToInt32(txtBeds.Value);
+            model.R_EmptyBeds = Convert.ToInt32(txtEmptyBeds.Value);
+
             if (RoomBLL.AddRoom(model) > 0)
             {
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('添加成功！');window.location.replace('RoomManage.aspx');</script>");
@@ -104,6 +107,7 @@ public partial class RoomAdd : System.Web.UI.Page
             model.R_Tel = txtTel.Value.Trim();
             model.Rt_Id = Convert.ToInt32(ddlRt_Id.SelectedValue);
             model.R_Beds = Convert.ToInt32(txtBeds.Value);
+            model.R_EmptyBeds = Convert.ToInt32(txtEmptyBeds.Value);
 
             if (RoomBLL.UpdateRoom(model) > 0)
             {

@@ -65,7 +65,7 @@
             标准价格：
             </th>
             <td style="text-align: left; ">
-                <input id="txtPrice" type="text"  runat="server"  onkeyup="clearNoNum(this)" /><span
+                <input id="txtPrice" type="text"  runat="server"  onkeyup="clearNoNum(this)" value="0"/><span
                     style="color: Red;">/天*</span>
             </td>
            

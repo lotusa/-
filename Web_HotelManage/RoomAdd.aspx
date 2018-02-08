@@ -19,11 +19,26 @@
                 document.getElementById("txtNo").focus();
                 return false;
             }
-
+            checkBeds();
         }
-
-
-
+        function checkBeds(){
+            
+            var num1 = document.getElementById("txtBeds").value;
+            var num2 = document.getElementById("txtEmptyBeds").value;
+                if(parseInt(num2)>parseInt(num1))
+                { 
+                    alert('空床数不应大于床位数！'); 
+                    return false;
+                }
+            
+            return true; 
+        } 
+            
+        function setEmptyBeds(obj) {
+            var num = obj.value;
+            document.getElementById("txtEmptyBeds").value = num;
+            //$("#txtEmptyBeds").val(num);
+        }
 
 
     </script>
@@ -68,7 +83,20 @@
                 <th>床位数：
                 </th>
                 <td style="text-align: left;">
-                    <input id="txtBeds" type="text" runat="server" />
+                    <input id="txtBeds" type="text" runat="server" onblur="setEmptyBeds(this)" value="1" />
+                    <span
+                        style="color: Red;">*</span>
+        <asp:RegularExpressionValidator ID="revBeds" runat="server" ControlToValidate="txtBeds" ErrorMessage="请输入数字" ValidationExpression="\d+" ValidationGroup="RooAddVG" Display="Dynamic"></asp:RegularExpressionValidator>
+
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="请输入床位数" ValidationGroup="RoomAddVG" ControlToValidate="txtBeds"></asp:RequiredFieldValidator>
+                </td>
+
+            </tr>
+                        <tr>
+                <th>空床数：
+                </th>
+                <td style="text-align: left;">
+                    <input id="txtEmptyBeds" type="text" runat="server" value="1" />
                     <span
                         style="color: Red;">*</span>
                 </td>
@@ -95,7 +123,6 @@
                 </td>
             </tr>
         </table>
-        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtBeds" ErrorMessage="请输入数字" ValidationExpression="\\d+" ValidationGroup="RooAddValidation" Display="Dynamic"></asp:RegularExpressionValidator>
 
     </form>
 </body>

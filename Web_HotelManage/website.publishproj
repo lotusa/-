@@ -19,11 +19,9 @@ website.publishproj
     <ProjectGuid>{c745655d-173b-43be-aa2a-f5e7de59d399}</ProjectGuid>
     <SourceWebPhysicalPath>$(MSBuildThisFileDirectory)</SourceWebPhysicalPath>
     <SourceWebVirtualPath>/Web_HotelManage</SourceWebVirtualPath>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
-    <SourceWebProject>
-    </SourceWebProject>
-    <SourceWebMetabasePath>
-    </SourceWebMetabasePath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SourceWebProject>D:\codes\Hotels\HotelManage-master\HotelManage-master\Web_HotelManage</SourceWebProject>
+    <SourceWebMetabasePath>/IISExpress/7.5/LM/W3SVC/2/ROOT</SourceWebMetabasePath>
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

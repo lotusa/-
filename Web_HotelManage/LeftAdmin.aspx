@@ -153,7 +153,7 @@
             <div class="row">
                 <div class=" col-md-12 btn-group">
                     <a class="btn btn-primary" href="RoomTypeManage.aspx" target="main">客房类型管理</a>
-                    <a class="btn btn-primary" href="RoomManage.aspx" target="main">客房管理</a>
+                    <a class="btn btn-primary" href="RoomManage2.aspx" target="main">客房管理</a>
                     <a class="btn btn-primary" href="UsersManage.aspx" target="main">用户管理</a>
                     <a class="btn btn-primary" href="LiveStatistical.aspx" target="main">挂单记录查询</a>
                     <a class="btn btn-primary" href="UpdatePwd.aspx" target="main">修改密码</a>

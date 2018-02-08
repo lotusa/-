@@ -275,7 +275,7 @@
                         <td align="center"><%#Eval("L_Gender")%></td>
 
                         <td align="center"><%#Eval("L_Age")%></td>
-                        <td align="center"><button class="btn btn-primary" value="<%#Eval("L_Id") %>" onclick="setGuestInfo(this)">选择</button></td>
+                        <td align="center"><button class="btn btn-primary" value="<%#Eval("L_Id") %>" onclick="">选择</button></td>
                      </tr>
                 </ItemTemplate>
                 <FooterTemplate></table></FooterTemplate>
@@ -283,7 +283,7 @@
                         
                     <div class="modal-footer">
                          <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
-                         <%#Eval("L_Name")%>
+                         <%#Eval("L_Name")%>  <%#Eval("L_Tel")%>
                     </div>
                 </div>
             </div>
@@ -292,7 +292,7 @@
         <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-            <%#Eval("L_Tel")%>
+          
     <script  src="Scripts/jquery-1.9.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <script src="JavaScript/docs.min.js"></script>

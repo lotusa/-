@@ -17,7 +17,7 @@ namespace DAL
         ///</summary>
         public static int AddRoom(Room RoomModel)
         {
-            string sql = string.Format("insert into  Room (R_No,R_Tel,R_State,Rt_Id, R_Beds)values('{0}','{1}','{2}',{3}, {4}, {5})",RoomModel.R_No,RoomModel.R_Tel,RoomModel.R_State,RoomModel.Rt_Id,RoomModel.R_Beds);
+            string sql = string.Format("insert into  Room (R_No,R_Tel,R_State,Rt_Id, R_Beds,  RoomModel.R_EmptyBeds)values('{0}','{1}','{2}',{3}, {4}, {5})", RoomModel.R_No, RoomModel.R_Tel, RoomModel.R_State, RoomModel.Rt_Id, RoomModel.R_Beds, RoomModel.R_EmptyBeds);
             return DBHelper.ExecuteCommand(sql);
         }
 

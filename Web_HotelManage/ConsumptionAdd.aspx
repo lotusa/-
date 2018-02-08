@@ -130,7 +130,7 @@
     <div class="Body_Title">消费记录</div>
     <asp:Repeater ID="RpNews" runat="server">
         <HeaderTemplate>
-            <table  class="Admin_Table" >
+            <table  class=" table table-bordered" >
                 <thead>
                     <tr class="Admin_Table_Title">
                       
