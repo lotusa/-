@@ -44,6 +44,7 @@
 
 .Admin_Table_Title {
     background-image: url(../image/whood.gif);
+    background-size:cover;
     font-size: 14px;
     height: 23px;
     color: #0080CE;

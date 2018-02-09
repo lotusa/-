@@ -58,20 +58,20 @@
         <HeaderTemplate>
             <table  class=" table table-bordered" >
                 <thead>
-                    <tr class="Admin_Table_Title">
+                    <tr class=" Admin_Table_Title">
                       
                         <th >入住编号</th>
                         <th >客房类型</th>
-                        <th >标准价格(天)</th>
+                        <th class="hidden">标准价格(天)</th>
                         <th >房间号</th>
                         <th >客户姓名</th>
                         <th >客户手机</th>
                         <th >身份证</th>
                        <th >入住日期</th>
-                       <th >退房日期</th>
-                       <th >入住定金</th>
+                       <th class="hidden">退房日期</th>
+                       <th class="hidden">入住定金</th>
                        <th >状态</th>
-                       <th >消费累计</th>
+                       <th class="hidden">消费累计</th>
                         <th >操作</th>
                     </tr>
                 </thead>
@@ -80,24 +80,24 @@
             <tr>
                 
                  
-                 <td align="center"><%#Eval("L_No")%></td>
-                  <td align="center"><%#BLL.RoomTypeBLL.GetRoomTypeById(Convert.ToInt32(Eval("Rt_Id"))).Rt_Name%></td>
-                  <td align="center"><%#BLL.RoomTypeBLL.GetRoomTypeById(Convert.ToInt32(Eval("Rt_Id"))).Rt_Price%></td>
-                 <td align="center"><%#Eval("R_No")%></td>
-                 <td align="center"><%#Eval("L_Name")%></td>
-                  <td align="center"><%#Eval("L_Tel")%></td>
-                 <td align="center"><%#Eval("L_IdCard")%></td>
+                 <td ><%#Eval("L_No")%></td>
+                  <td ><%#BLL.RoomTypeBLL.GetRoomTypeById(Convert.ToInt32(Eval("Rt_Id"))).Rt_Name%></td>
+                  <td   class="hidden"><%#BLL.RoomTypeBLL.GetRoomTypeById(Convert.ToInt32(Eval("Rt_Id"))).Rt_Price%></td>
+                 <td ><%#Eval("R_No")%></td>
+                 <td ><%#Eval("L_Name")%></td>
+                  <td ><%#Eval("L_Tel")%></td>
+                 <td ><%#Eval("L_IdCard")%></td>
                 
-                 <td align="center">
+                 <td >
                  <%#Convert.ToDateTime(Eval("L_Time")).ToString("yyyy-MM-dd")%>
                  </td>
                 
-                <td align="center"><%#Convert.ToDateTime(Eval("L_OutTime")).ToString("yyyy-MM-dd")!="1900-01-01"?Convert.ToDateTime(Eval("L_OutTime")).ToString("yyyy-MM-dd"):""%></td>
-                 <td align="center"><%#Eval("L_Deposit")%></td>
-                  <td align="center"><%#Eval("L_State")%></td>
-                  <td align="center"><%#GetSum(Eval("L_Id"))%></td>
+                <td   class="hidden"><%#Convert.ToDateTime(Eval("L_OutTime")).ToString("yyyy-MM-dd")!="1900-01-01"?Convert.ToDateTime(Eval("L_OutTime")).ToString("yyyy-MM-dd"):""%></td>
+                 <td   class="hidden"><%#Eval("L_Deposit")%></td>
+                  <td ><%#Eval("L_State")%></td>
+                  <td   class="hidden"><%#GetSum(Eval("L_Id"))%></td>
                  
-              <td align="center"><a class="btn btn-primary" href="LiveUpdate.aspx?id=<%#Eval("L_Id") %>">退房</a></td>
+              <td ><a class="btn btn-primary" href="LiveUpdate.aspx?id=<%#Eval("L_Id") %>">退房</a></td>
             </tr>
         </ItemTemplate>
         <FooterTemplate></table></FooterTemplate>
