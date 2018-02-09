@@ -72,7 +72,7 @@ public partial class LiveAdd : System.Web.UI.Page
 
         SetBedsInfoByRoomId(ddlR_Id.SelectedValue);
 
-        userRepeater.DataSource = LiveBLL.AllData("");
+        userRepeater.DataSource = GuestBLL.AllData("");
         userRepeater.DataBind();
     }
 

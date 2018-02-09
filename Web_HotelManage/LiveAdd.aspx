@@ -155,7 +155,7 @@
             <td style="text-align: left; ">
                 <input id="txtTel" type="text"  runat="server"   /><span
                     style="color: Red;">*</span>
-                <asp:RegularExpressionValidator ID="rgvPhone" runat="server" ControlToValidate="txtTel" Display="Dynamic" ErrorMessage="手机号码错误" ValidationExpression="((\(\d{3}\)|\d{3}-)?\d{8}|\d{13})" ValidationGroup="ValidationGroupAddLive"></asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator ID="rgvPhone" runat="server" ControlToValidate="txtTel" Display="Dynamic" ErrorMessage="手机号码错误" ValidationExpression="\d{11}" ValidationGroup="ValidationGroupAddLive"></asp:RegularExpressionValidator>
             </td>
            
         </tr>
@@ -269,13 +269,13 @@
                 <ItemTemplate>
                     <tr onclick="setGuest(this)" >
 
-                        <td align="center"><%#Eval("L_Name")%></td>
-                        <td align="center"><%#Eval("L_Tel")%></td>
-                        <td align="center"><%#Eval("L_IdCard")%></td>
-                        <td align="center"><%#Eval("L_Gender")%></td>
+                        <td align="center"><%#Eval("G_Name")%></td>
+                        <td align="center"><%#Eval("G_Tel")%></td>
+                        <td align="center"><%#Eval("G_IdCard")%></td>
+                        <td align="center"><%#Eval("G_Gender")%></td>
 
-                        <td align="center"><%#Eval("L_Age")%></td>
-                        <td align="center"><button class="btn btn-primary" value="<%#Eval("L_Id") %>" onclick="">选择</button></td>
+                        <td align="center"><%#Eval("G_Age")%></td>
+                        <td align="center"><button class="btn btn-primary" value="<%#Eval("G_Id") %>" onclick="">选择</button></td>
                      </tr>
                 </ItemTemplate>
                 <FooterTemplate></table></FooterTemplate>
@@ -283,7 +283,7 @@
                         
                     <div class="modal-footer">
                          <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
-                         <%#Eval("L_Name")%>  <%#Eval("L_Tel")%>
+                         <%#Eval("G_Name")%>  <%#Eval("G_Tel")%>
                     </div>
                 </div>
             </div>

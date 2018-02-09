@@ -15,6 +15,7 @@ namespace BLL
         ///</summary> 
         public static int AddLive(Live LiveModel)
         {
+            GuestDAL.AddGuest(LiveModel);
             return LiveDAL.AddLive(LiveModel);
         }
         /// <summary> 

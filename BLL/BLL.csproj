@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsumptionBLL.cs" />
+    <Compile Include="GuestBLL.cs" />
     <Compile Include="LiveBLL.cs" />
     <Compile Include="OrdersBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

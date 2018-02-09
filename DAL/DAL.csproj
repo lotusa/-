@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="ConsumptionDAL.cs" />
     <Compile Include="DBHelper.cs" />
+    <Compile Include="GuestDAL.cs" />
     <Compile Include="LiveDAL.cs" />
     <Compile Include="OrdersDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
