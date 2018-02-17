@@ -131,7 +131,7 @@
                 <label title="总床数："></label>
                 <label title="空床数："></label>
                 床位数：<asp:TextBox ID="ddlR_Beds" runat="server" Width="30px" ReadOnly="True"></asp:TextBox>
-                空床数：<asp:TextBox ID="ddlR_EmptyBeds" runat="server" style="margin-left: 0px" Width="30px" ></asp:TextBox>
+                空床数：<asp:TextBox ID="ddlR_EmptyBeds" runat="server" style="margin-left: 0px" Width="30px" ReadOnly="false" ></asp:TextBox>
             </td>
            
         </tr>
