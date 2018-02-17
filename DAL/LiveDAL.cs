@@ -17,7 +17,7 @@ namespace DAL
         ///</summary>
         public static int AddLive(Live LiveModel)
         {
-            string sql = string.Format("insert into  Live (L_No,L_Name,L_IdCard, L_Gender, L_Age, L_Tel,L_Time,L_OutTime,L_Deposit,R_Id,L_Pay,L_Total,L_State,U_Id )values('{0}','{1}','{2}',{3},{4},'{5}','{6}','{7}',{8},{9},'{10}','{11}','{12}',{13})",LiveModel.L_No,LiveModel.L_Name,LiveModel.L_IdCard,LiveModel.L_Gender=="ÄÐ"?1:0,LiveModel.L_Age,LiveModel.L_Tel,LiveModel.L_Time,LiveModel.L_OutTime,LiveModel.L_Deposit,LiveModel.R_Id,LiveModel.L_Pay,LiveModel.L_Total,LiveModel.L_State,LiveModel.U_Id);
+            string sql = string.Format("insert into  Live (L_No,L_Name,L_IdCard, L_Gender, L_Age, L_Tel,L_Time,L_OutTime,L_Deposit,R_Id,L_Pay,L_Total,L_State,U_Id,L_Comment )values('{0}','{1}','{2}',{3},{4},'{5}','{6}','{7}',{8},{9},'{10}','{11}','{12}',{13},{14})",LiveModel.L_No,LiveModel.L_Name,LiveModel.L_IdCard,LiveModel.L_Gender=="ÄÐ"?1:0,LiveModel.L_Age,LiveModel.L_Tel,LiveModel.L_Time,LiveModel.L_OutTime,LiveModel.L_Deposit,LiveModel.R_Id,LiveModel.L_Pay,LiveModel.L_Total,LiveModel.L_State,LiveModel.U_Id, LiveModel.L_Comment);
             return DBHelper.ExecuteCommand(sql);
         }
 
@@ -26,7 +26,7 @@ namespace DAL
         ///</summary>
         public static int UpdateLive(Live LiveModel)
         {
-            string sql = string.Format(" UPDATE Live  set L_No='{0}',L_Name='{1}',L_IdCard='{2}',L_Tel='{3}',L_Time='{4}',L_OutTime='{5}',L_Deposit={6},R_Id={7},L_Pay={8},L_Total={9},L_State='{10}, L_Gender={13}, L_Age={14}',U_Id={11} where L_Id={12} ",LiveModel.L_No,LiveModel.L_Name,LiveModel.L_IdCard,LiveModel.L_Tel,LiveModel.L_Time,LiveModel.L_OutTime,LiveModel.L_Deposit,LiveModel.R_Id,LiveModel.L_Pay,LiveModel.L_Total,LiveModel.L_State,LiveModel.U_Id  ,LiveModel.L_Id, LiveModel.L_Gender == "ÄÐ" ? 1 : 0, LiveModel.L_Age);
+            string sql = string.Format(" UPDATE Live  set L_No='{0}',L_Name='{1}',L_IdCard='{2}',L_Tel='{3}',L_Time='{4}',L_OutTime='{5}',L_Deposit={6},R_Id={7},L_Pay={8},L_Total={9},L_State='{10}, L_Gender={13}, L_Age={14}',U_Id={11}, L_Comment={15}, where L_Id={12} ",LiveModel.L_No,LiveModel.L_Name,LiveModel.L_IdCard,LiveModel.L_Tel,LiveModel.L_Time,LiveModel.L_OutTime,LiveModel.L_Deposit,LiveModel.R_Id,LiveModel.L_Pay,LiveModel.L_Total,LiveModel.L_State,LiveModel.U_Id  ,LiveModel.L_Id, LiveModel.L_Gender == "ÄÐ" ? 1 : 0, LiveModel.L_Age, LiveModel.L_Comment);
             return DBHelper.ExecuteCommand(sql);
         }
 

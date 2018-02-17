@@ -169,6 +169,16 @@
                 <asp:RegularExpressionValidator ID="rgvID" runat="server" ErrorMessage="身份证号码错误" ValidationExpression="\d{17}[\d|X]|\d{15}" ControlToValidate="txtIdCard" Display="Dynamic" ValidationGroup="ValidationGroupAddLive"></asp:RegularExpressionValidator>
             </td>
            
+        </tr> 
+        <tr>
+            <th >
+            年龄：
+            </th>
+            <td style="text-align: left; ">
+                <input id="txtAge" type="text"  runat="server"   /><span
+                    style="color: Red;">*</span>
+            </td>
+           
         </tr>
         <tr>
             <th>性别：
@@ -187,21 +197,20 @@
         </tr>
         <tr>
             <th >
-            年龄：
-            </th>
-            <td style="text-align: left; ">
-                <input id="txtAge" type="text"  runat="server"   /><span
-                    style="color: Red;">*</span>
-            </td>
-           
-        </tr>
-        <tr>
-            <th >
             入住日期：
             </th>
             <td style="text-align: left; ">
                 <input id="txtTime" type="text" runat="server" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /><input id="txtGetDate" type="text" runat="server"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" style="display:none;" /><span
                     style="color: Red;">*</span>
+            </td>
+           
+        </tr>
+                <tr>
+            <th >
+            备注：
+            </th>
+            <td style="text-align: left; ">
+                <input id="txtComment"  runat="server"   />
             </td>
            
         </tr>

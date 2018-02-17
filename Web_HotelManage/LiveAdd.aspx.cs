@@ -18,6 +18,8 @@ public partial class LiveAdd : System.Web.UI.Page
 {
     public string strNav = "入住登记";
     public Users users = new Users();
+    public delegate int ModifyLiveDelegate(Live model); 
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["Users"] != null)
@@ -88,26 +90,19 @@ public partial class LiveAdd : System.Web.UI.Page
     /// <param name="e"></param>
     protected void btnUpdate_Click(object sender, EventArgs e)
     {
+        ModifyLiveDelegate uld;
         if (btnUpdate.Text == "添加")
         {
+            uld = LiveBLL.AddLive;
+        }
+        else if (btnUpdate.Text == "修改")
+        {
+            uld = LiveBLL.UpdateLive;
+        }
 
             Live model = new Live();
             //model.L_Deposit = Convert.ToDecimal(txtDeposit.Value.Trim());
-            model.L_Name = txtName.Value.Trim();
-            model.L_IdCard = txtIdCard.Value.Trim();
-            model.L_Gender = RadioButtonListGender.SelectedValue;
-            model.L_Age = Convert.ToInt32(txtAge.Value.Trim());
-
-            model.L_No = txtNo.Value.Trim();
-            model.L_OutTime =Convert.ToDateTime("1900-01-01");
-            model.L_Pay = 0;
-            model.L_State = "未退房";
-            model.L_Tel = txtTel.Value.Trim();
-            model.L_Time = Convert.ToDateTime(txtTime.Value);
-            model.L_Total = 0;
-            model.R_Id = Convert.ToInt32( ddlR_Id.SelectedValue);
-            model.U_Id = users.U_Id;
-            
+            SetLiveModel(model);           
            
             if (LiveBLL.AddLive(model) > 0)
             {
@@ -117,30 +112,57 @@ public partial class LiveAdd : System.Web.UI.Page
                     this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('房间已满！');window.location.replace('RoomSearch.aspx');</script>");
                     return;
                 }
-                room.R_EmptyBeds -= 1;
-                if (room.R_Beds == room.R_EmptyBeds)
-                {
-                    room.R_State = "空";
-                }
-                else if (room.R_EmptyBeds < room.R_Beds)
-                {
-                    room.R_State = "入住";
-                }
-                RoomBLL.UpdateRoom(room);
-                Orders ord = OrdersBLL.GetIdByOrders(Convert.ToInt32(Request.QueryString["id"]));
-                ord.O_State = "已入住";
-                OrdersBLL.UpdateOrders(ord);
-                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('添加成功！');window.location.replace('RoomSearch.aspx');</script>");
+                UpdateRoom(room);
+                UpdateOrders();
+                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('操作成功！');window.location.replace('RoomSearch.aspx');</script>");
                 return;
             }
             else
             {
-                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('添加失败！');</script>");
+                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('操作失败！');</script>");
                 return;
             }
 
+    }
 
+    private void UpdateOrders()
+    {
+        Orders ord = OrdersBLL.GetIdByOrders(Convert.ToInt32(Request.QueryString["id"]));
+        ord.O_State = "已入住";
+        OrdersBLL.UpdateOrders(ord);
+    }
+
+    private static void UpdateRoom(Room room)
+    {
+        room.R_EmptyBeds -= 1;
+        if (room.R_Beds == room.R_EmptyBeds)
+        {
+            room.R_State = "空";
         }
+        else if (room.R_EmptyBeds < room.R_Beds)
+        {
+            room.R_State = "入住";
+        }
+        RoomBLL.UpdateRoom(room);
+    }
+
+    private void SetLiveModel(Live model)
+    {
+        model.L_Name = txtName.Value.Trim();
+        model.L_IdCard = txtIdCard.Value.Trim();
+        model.L_Gender = RadioButtonListGender.SelectedValue;
+        model.L_Age = Convert.ToInt32(txtAge.Value.Trim());
+
+        model.L_No = txtNo.Value.Trim();
+        model.L_OutTime = Convert.ToDateTime("1900-01-01");
+        model.L_Pay = 0;
+        model.L_State = "未退房";
+        model.L_Tel = txtTel.Value.Trim();
+        model.L_Time = Convert.ToDateTime(txtTime.Value);
+        model.L_Total = 0;
+        model.R_Id = Convert.ToInt32(ddlR_Id.SelectedValue);
+        model.U_Id = users.U_Id;
+        model.L_Comment = txtComment.Value;
     }
     protected void ddlRt_Id_SelectedIndexChanged(object sender, EventArgs e)
     {

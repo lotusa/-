@@ -27,6 +27,7 @@ namespace Model
         private decimal _L_Total;
         private string _L_State;
         private int _U_Id;
+        public string L_Comment { get;set;}
 
         /// <summary>
         /// 
