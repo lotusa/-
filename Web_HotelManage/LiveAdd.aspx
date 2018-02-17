@@ -15,7 +15,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
         <!-- Bootstrap core CSS -->
-    <%--<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">--%>
+    <%--<link href="css/bootstrap.min.css" rel="stylesheet">--%>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap theme -->
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
@@ -23,7 +23,7 @@
     <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="JavaScript/html5shiv.min.js"></script>
       <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
@@ -131,7 +131,7 @@
                 <label title="总床数："></label>
                 <label title="空床数："></label>
                 床位数：<asp:TextBox ID="ddlR_Beds" runat="server" Width="30px" ReadOnly="True"></asp:TextBox>
-                空床数：<asp:TextBox ID="ddlR_EmptyBeds" runat="server" style="margin-left: 0px" Width="30px" ReadOnly="True"></asp:TextBox>
+                空床数：<asp:TextBox ID="ddlR_EmptyBeds" runat="server" style="margin-left: 0px" Width="30px" ></asp:TextBox>
             </td>
            
         </tr>
