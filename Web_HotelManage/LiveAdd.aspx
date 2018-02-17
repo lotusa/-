@@ -352,7 +352,7 @@
   }) 
 
   $(function () {
-      function GetBirthdatByIdNo(iIdNo) {
+      function GetBirthdayByIdNo(iIdNo) {
           var ymd = "";
           var sexStr = "";
           iIdNo = $.trim(iIdNo);
@@ -380,7 +380,7 @@
           var month = myDate.getMonth() + 1;
           var day = myDate.getDate();
 
-          var age = myDate.getFullYear() - ymd.substring(0, 4) - 1;
+          var age = myDate.getFullYear() - ymd.substring(0, 4);
           if (ymd.substring(4, 6) < month || ymd.substring(4, 6) == month && ymd.substring(6, 8) <= day) {
               age++;
           }
@@ -389,7 +389,15 @@
           $("#txtAge").val(age);
       }
       $("#txtIdCard").blur(function () {
-          GetBirthdatByIdNo($(this).val());
+          if (this.length == 15){
+          GetBirthdayByIdNo($(this).val());
+          }
+      });
+
+      $("#txtIdCard").keyup(function () {
+          if ($("#txtIdCard").val().length == 18) {
+          GetBirthdayByIdNo($(this).val());
+          }
       });
       
   });
