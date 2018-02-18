@@ -34,6 +34,7 @@ public partial class LiveUpdate : System.Web.UI.Page
         {
 
             txtUserName.Value = users.U_Name.Trim();
+            txtOutTime.Value = DateTime.Now.ToString("yyyy-MM-dd");
             if (Request.QueryString["id"] != null)
             {
                 Live model = LiveBLL.GetIdByLive(Convert.ToInt32(Request.QueryString["id"]));

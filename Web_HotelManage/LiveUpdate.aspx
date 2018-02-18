@@ -21,11 +21,11 @@
         function Calculation() {
            
 
-            if (document.getElementById("txtOutTime").value <= document.getElementById("txtTime").value) {
-                alert("退房日期必须大于入住日期！");
-                document.getElementById("txtOutTime").focus();
-                return false;
-            }
+            //if (document.getElementById("txtOutTime").value <= document.getElementById("txtTime").value) {
+            //    alert("退房日期必须大于入住日期！");
+            //    document.getElementById("txtOutTime").focus();
+            //    return false;
+            //}
            
             var myDate = new Date();
             $.ajax({
