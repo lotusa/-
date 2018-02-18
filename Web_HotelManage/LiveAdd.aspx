@@ -70,11 +70,11 @@
             }
 
 
-            if (document.getElementById("txtTime").value < document.getElementById("txtGetDate").value) {
-                alert("入住日期必须大于或等于当前日期！");
-                document.getElementById("txtTime").focus();
-                return false;
-            }
+            //if (document.getElementById("txtTime").value < document.getElementById("txtGetDate").value) {
+            //    alert("入住日期必须大于或等于当前日期！");
+            //    document.getElementById("txtTime").focus();
+            //    return false;
+            //}
             //if (document.getElementById("txtDeposit").value == "") {
             //    alert("带红色 * 号项不能为空！");
             //    document.getElementById("txtDeposit").focus();

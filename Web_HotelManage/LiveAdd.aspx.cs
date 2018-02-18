@@ -53,6 +53,11 @@ public partial class LiveAdd : System.Web.UI.Page
                     ddlR_Id.DataBind();
                 }
             }
+            if (Request.QueryString["L_Id"] != null)
+            {
+
+            }
+ 
             
         }
     }
@@ -99,12 +104,17 @@ public partial class LiveAdd : System.Web.UI.Page
         {
             uld = LiveBLL.UpdateLive;
         }
+        else
+        {
+            this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('无法是别的操作！');window.location.replace('RoomSearch.aspx');</script>");
+            return;
+        }
 
             Live model = new Live();
             //model.L_Deposit = Convert.ToDecimal(txtDeposit.Value.Trim());
-            SetLiveModel(model);           
-           
-            if (LiveBLL.AddLive(model) > 0)
+            SetLiveModel(model);
+
+            if (uld(model) > 0)
             {
                 Room room = RoomBLL.GetRoomById(Convert.ToInt32(ddlR_Id.SelectedValue));
                 if (room.R_EmptyBeds < 1)
